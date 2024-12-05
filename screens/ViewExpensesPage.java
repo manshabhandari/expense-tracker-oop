@@ -24,14 +24,14 @@ public class ViewExpensesPage extends JFrame {
         JTable table = new JTable(data, columns);
         JScrollPane scrollPane = new JScrollPane(table);
 
-        JButton mainMenuButton = new JButton("Main Menu");
-        mainMenuButton.addActionListener(e -> {
+        JButton BtnMainMenu = new JButton("Main Menu");
+        BtnMainMenu.addActionListener(e -> {
             dispose();
             new MainMenuPage();
         });
 
         panel.add(scrollPane, BorderLayout.CENTER);
-        panel.add(mainMenuButton, BorderLayout.SOUTH);
+        panel.add(BtnMainMenu, BorderLayout.SOUTH);
 
         add(panel);
         setVisible(true);

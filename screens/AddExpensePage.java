@@ -33,21 +33,21 @@ public class AddExpensePage extends JFrame {
         JTextField amountField = new JTextField("15.00");
 
         // Buttons
-        JButton saveAndReturnButton = createStyledButton("Save & Return to Main Menu");
-        JButton saveAndAddAnotherButton = createStyledButton("Save & Add Another");
-        JButton cancelButton = createStyledButton("Cancel");
+        JButton BtnSaveAndReturn = createStyledButton("Save & Return to Main Menu");
+        JButton BtnSaveAndAddAnother = createStyledButton("Save & Add Another");
+        JButton BtnCancel = createStyledButton("Cancel");
 
-        saveAndReturnButton.addActionListener(e -> {
+        BtnSaveAndReturn.addActionListener(e -> {
             dispose();
             new MainMenuPage(); // Navigate back to Main Menu
         });
 
-        cancelButton.addActionListener(e -> {
+        BtnCancel.addActionListener(e -> {
             dispose(); // Close current window
             new MainMenuPage(); // Navigate to MainMenuPage
         });
 
-        saveAndAddAnotherButton.addActionListener(e -> {
+        BtnSaveAndAddAnother.addActionListener(e -> {
             // Clear fields for the next entry
             dateField.setText("");
             nameField.setText("");
@@ -81,14 +81,14 @@ public class AddExpensePage extends JFrame {
         panel.add(amountField, gbc);
 
         gbc.gridx = 0; gbc.gridy = 4;
-        panel.add(saveAndReturnButton, gbc);
+        panel.add(BtnSaveAndReturn, gbc);
 
         gbc.gridx = 1; gbc.gridy = 4;
-        panel.add(saveAndAddAnotherButton, gbc);
+        panel.add(BtnSaveAndAddAnother, gbc);
 
         gbc.gridx = 0; gbc.gridy = 5;
         gbc.gridwidth = 2;
-        panel.add(cancelButton, gbc);
+        panel.add(BtnCancel, gbc);
 
         add(panel);
         setVisible(true);

@@ -20,54 +20,74 @@ public class MainMenuPage extends JFrame {
         gbc.fill = GridBagConstraints.HORIZONTAL;
 
         // Buttons for all 8 options
-        JButton addExpenseButton = createStyledButton("Add Expense");
-        JButton editExpenseButton = createStyledButton("Edit Expense");
-        JButton deleteExpenseButton = createStyledButton("Delete Expense");
-        JButton searchButton = createStyledButton("Search by Name");
-        JButton viewExpensesButton = createStyledButton("View Expenses");
-        JButton viewInsightsButton = createStyledButton("View Insights");
-        JButton exportButton = createStyledButton("Export to CSV");
-        JButton closeButton = createStyledButton("Close Tracker");
+        JButton BtnAddExpense = createStyledButton("Add Expense");
+        JButton BtnEditExpense = createStyledButton("Edit Expense");
+        JButton BtnDeleteExpense = createStyledButton("Delete Expense");
+        JButton BtnSearchByName = createStyledButton("Search by Name");
+        JButton BtnViewExpenses = createStyledButton("View Expenses");
+        JButton BtnViewInsights = createStyledButton("View Insights");
+        JButton BtnExport = createStyledButton("Export to CSV");
+        JButton BtnClose = createStyledButton("Close Tracker");
 
         // Adding buttons to the panel in a grid-like layout
         gbc.gridx = 0; gbc.gridy = 0;
-        panel.add(addExpenseButton, gbc);
+        panel.add(BtnAddExpense, gbc);
 
         gbc.gridx = 1; gbc.gridy = 0;
-        panel.add(viewExpensesButton, gbc);
+        panel.add(BtnViewExpenses, gbc);
 
         gbc.gridx = 0; gbc.gridy = 1;
-        panel.add(editExpenseButton, gbc);
+        panel.add(BtnEditExpense, gbc);
 
         gbc.gridx = 1; gbc.gridy = 1;
-        panel.add(viewInsightsButton, gbc);
+        panel.add(BtnViewInsights, gbc);
 
         gbc.gridx = 0; gbc.gridy = 2;
-        panel.add(deleteExpenseButton, gbc);
+        panel.add(BtnDeleteExpense, gbc);
 
         gbc.gridx = 1; gbc.gridy = 2;
-        panel.add(exportButton, gbc);
+        panel.add(BtnExport, gbc);
 
         gbc.gridx = 0; gbc.gridy = 3;
-        panel.add(searchButton, gbc);
+        panel.add(BtnSearchByName, gbc);
 
         gbc.gridx = 1; gbc.gridy = 3;
-        panel.add(closeButton, gbc);
+        panel.add(BtnClose, gbc);
 
         add(panel);
         setVisible(true);
 
-        addExpenseButton.addActionListener(e -> {
+        BtnAddExpense.addActionListener(e -> {
             dispose(); // Close current window
             new AddExpensePage(); // Navigate to AddExpensePage
         });
 
-        viewExpensesButton.addActionListener(e -> {
+        BtnViewExpenses.addActionListener(e -> {
             dispose(); // Close current window
             new ViewExpensesPage(); // Navigate to ViewExpensesPage
         });
 
-        closeButton.addActionListener(e -> System.exit(0));
+        BtnDeleteExpense.addActionListener(e -> {
+            dispose(); // Close current window
+            new DeleteExpensePage(); // Navigate to ViewExpensesPage
+        });
+
+        BtnEditExpense.addActionListener(e -> {
+            dispose(); // Close current window
+            new EditExpensePage(); // Navigate to ViewExpensesPage
+        });
+
+        BtnSearchByName.addActionListener(e -> {
+            dispose(); // Close current window
+            new SearchByNamePage(); // Navigate to ViewExpensesPage
+        });
+
+        BtnViewInsights.addActionListener(e -> {
+            dispose(); // Close current window
+            new ViewInsightsPage(); // Navigate to ViewExpensesPage
+        });
+
+        BtnClose.addActionListener(e -> System.exit(0));
     }
 
     // Helper method for consistent button styling

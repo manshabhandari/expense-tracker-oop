@@ -28,8 +28,8 @@ public class WelcomePage extends JFrame {
         welcomeLabel.setFont(new Font("Roboto", Font.PLAIN, 14));
 
         // Get Started button
-        JButton getStartedButton = createStyledButton("Get Started");
-        getStartedButton.addActionListener(e -> {
+        JButton BtnGetStarted = createStyledButton("Get Started");
+        BtnGetStarted.addActionListener(e -> {
             dispose();
             new SignUpPage(); // Navigate to the SignUp screen
         });
@@ -44,7 +44,7 @@ public class WelcomePage extends JFrame {
         panel.add(welcomeLabel, gbc);
 
         gbc.gridy = 2;
-        panel.add(getStartedButton, gbc);
+        panel.add(BtnGetStarted, gbc);
 
         add(panel);
         setVisible(true);

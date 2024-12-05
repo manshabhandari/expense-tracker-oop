@@ -30,8 +30,8 @@ public class SignUpPage extends JFrame {
         JTextField budgetField = createTextField("200.00");
 
         // Continue button
-        JButton continueButton = createStyledButton("Continue");
-        continueButton.addActionListener(e -> {
+        JButton BtnContinue = createStyledButton("Continue");
+        BtnContinue.addActionListener(e -> {
             dispose();
             new MainMenuPage(); // Navigate to Main Menu
         });
@@ -57,7 +57,7 @@ public class SignUpPage extends JFrame {
 
         gbc.gridx = 0; gbc.gridy = 3;
         gbc.gridwidth = 2; // Span two columns for the button
-        panel.add(continueButton, gbc);
+        panel.add(BtnContinue, gbc);
 
         add(panel);
         setVisible(true);
