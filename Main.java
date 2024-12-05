@@ -1,9 +1,7 @@
+import screens.WelcomePage;
+
 public class Main {
     public static void main(String[] args) {
-        // ExpenseManager expenseManager = new ExpenseManager();
-        // expenseManager.run();
-        // initial commit
-
+        new WelcomePage();
     }
-
 }
