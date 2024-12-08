@@ -4,8 +4,14 @@ import java.awt.*;
 import javax.swing.*;
 
 public class SearchByNamePage extends JFrame {
+    private String firstName;
+    private String lastName;
+    private double totalBudget;
 
-    public SearchByNamePage() {
+    public SearchByNamePage(String firstName, String lastName, double totalBudget) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.totalBudget = totalBudget;
         setTitle("Search by Name");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setSize(600, 500);
@@ -39,8 +45,9 @@ public class SearchByNamePage extends JFrame {
         // Button functionality
         BtnMainMenu.addActionListener(e -> {
             dispose();
-            new MainMenuPage();
+            new MainMenuPage(firstName, lastName, totalBudget); // Pass the required data
         });
+
 
         // Adding components to the panel
         gbc.gridx = 0; gbc.gridy = 0; gbc.gridwidth = 2;

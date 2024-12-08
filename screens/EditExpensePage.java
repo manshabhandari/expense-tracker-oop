@@ -4,8 +4,14 @@ import java.awt.*;
 import javax.swing.*;
 
 public class EditExpensePage extends JFrame {
+    private String firstName;
+    private String lastName;
+    private double totalBudget;
 
-    public EditExpensePage() {
+    public EditExpensePage(String firstName, String lastName, double totalBudget) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.totalBudget = totalBudget;
         setTitle("Edit Expense");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setSize(500, 500);
@@ -80,8 +86,9 @@ public class EditExpensePage extends JFrame {
         // Button functionality
         BtnCancel.addActionListener(e -> {
             dispose();
-            new MainMenuPage();
+            new MainMenuPage(firstName, lastName, totalBudget); // Pass the required data
         });
+
 
         BtnDelete.addActionListener(e -> {
             // TODO: Add functionality to delete the expense

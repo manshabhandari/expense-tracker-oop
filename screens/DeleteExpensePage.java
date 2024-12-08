@@ -4,8 +4,14 @@ import java.awt.*;
 import javax.swing.*;
 
 public class DeleteExpensePage extends JFrame {
+    private String firstName;
+    private String lastName;
+    private double totalBudget;
 
-    public DeleteExpensePage() {
+    public DeleteExpensePage(String firstName, String lastName, double totalBudget) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.totalBudget = totalBudget;
         setTitle("Delete Expense");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setSize(600, 500); // Increased size for better layout
@@ -40,8 +46,9 @@ public class DeleteExpensePage extends JFrame {
         // Button functionality
         BtnCancel.addActionListener(e -> {
             dispose();
-            new MainMenuPage();
+            new MainMenuPage(firstName, lastName, totalBudget); // Pass the required data
         });
+
 
         BtnSearch.addActionListener(e -> {
             // TODO: Implement search functionality to populate the table

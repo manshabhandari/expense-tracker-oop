@@ -5,7 +5,15 @@ import javax.swing.*;
 
 public class AddExpensePage extends JFrame {
 
-    public AddExpensePage() {
+    private String firstName;
+    private String lastName;
+    private double totalBudget;
+
+    public AddExpensePage(String firstName, String lastName, double totalBudget) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.totalBudget = totalBudget;
+
         setTitle("Add Expense");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setSize(400, 400);
@@ -21,38 +29,29 @@ public class AddExpensePage extends JFrame {
 
         // Labels and text fields
         JLabel dateLabel = new JLabel("Date:");
-        JTextField dateField = new JTextField();
+        JTextField dateField = new JTextField(15); // Set columns for consistent sizing
 
         JLabel nameLabel = new JLabel("Name:");
-        JTextField nameField = new JTextField();
+        JTextField nameField = new JTextField(15);
 
         JLabel categoryLabel = new JLabel("Category:");
-        JTextField categoryField = new JTextField();
+        JTextField categoryField = new JTextField(15);
 
         JLabel amountLabel = new JLabel("Amount:");
-        JTextField amountField = new JTextField("15.00");
+        JTextField amountField = new JTextField("15.00", 15);
 
         // Buttons
-        JButton BtnSaveAndReturn = createStyledButton("Save & Return to Main Menu");
-        JButton BtnSaveAndAddAnother = createStyledButton("Save & Add Another");
+        JButton BtnSave = createStyledButton("Save");
         JButton BtnCancel = createStyledButton("Cancel");
 
-        BtnSaveAndReturn.addActionListener(e -> {
+        BtnSave.addActionListener(e -> {
             dispose();
-            new MainMenuPage(); // Navigate back to Main Menu
+            new MainMenuPage(firstName, lastName, totalBudget); // Navigate back to Main Menu
         });
 
         BtnCancel.addActionListener(e -> {
             dispose(); // Close current window
-            new MainMenuPage(); // Navigate to MainMenuPage
-        });
-
-        BtnSaveAndAddAnother.addActionListener(e -> {
-            // Clear fields for the next entry
-            dateField.setText("");
-            nameField.setText("");
-            categoryField.setText("");
-            amountField.setText("");
+            new MainMenuPage(firstName, lastName, totalBudget); // Navigate to MainMenuPage
         });
 
         // Adding components to the panel
@@ -80,14 +79,11 @@ public class AddExpensePage extends JFrame {
         gbc.gridx = 1; gbc.gridy = 3;
         panel.add(amountField, gbc);
 
+        // Add the Save and Cancel buttons aligned to text fields
         gbc.gridx = 0; gbc.gridy = 4;
-        panel.add(BtnSaveAndReturn, gbc);
+        panel.add(BtnSave, gbc);
 
         gbc.gridx = 1; gbc.gridy = 4;
-        panel.add(BtnSaveAndAddAnother, gbc);
-
-        gbc.gridx = 0; gbc.gridy = 5;
-        gbc.gridwidth = 2;
         panel.add(BtnCancel, gbc);
 
         add(panel);

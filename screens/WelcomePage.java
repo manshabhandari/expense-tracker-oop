@@ -20,7 +20,7 @@ public class WelcomePage extends JFrame {
         gbc.fill = GridBagConstraints.HORIZONTAL;
 
         // Title label
-        JLabel titleLabel = new JLabel("Expense Tracker + Logo", SwingConstants.CENTER);
+        JLabel titleLabel = new JLabel("Expense Tracker", SwingConstants.CENTER);
         titleLabel.setFont(new Font("Roboto", Font.BOLD, 16));
 
         // Welcome label
