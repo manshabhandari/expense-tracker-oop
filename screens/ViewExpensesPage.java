@@ -122,6 +122,7 @@ public class ViewExpensesPage extends JFrame {
     }
 }
 
+
 // package screens;
 
 // import java.awt.*;
