@@ -120,10 +120,15 @@ public class MainMenuPage extends JFrame {
 
         String fileName = "Expenses.csv";
 
+        /*
+         * writer.append("Name: ").append(firstName).append(" ").append(lastName).append(",,,");
+//             writer.append("Expense Data,,,Data Generated: ").append(currentDate).append("\n");
+         */
         try (FileWriter writer = new FileWriter(fileName)) {
             // Header
             writer.append("Name: ").append(firstName).append(" ").append(lastName).append(",,,");
             writer.append("Expense Data,,,Data Generated: ").append(currentDate).append("\n");
+            writer.append("Monthly Budget: ,,,").append(String.valueOf(totalBudget)).append("\n\n");
 
             // Columns
             writer.append("Date,Name,Category,Amount\n");
@@ -154,7 +159,11 @@ public class MainMenuPage extends JFrame {
 // package screens;
 
 // import java.awt.*;
+// import java.io.FileWriter;
+// import java.io.IOException;
+// import java.text.SimpleDateFormat;
 // import java.util.ArrayList;
+// import java.util.Date;
 // import javax.swing.*;
 
 // public class MainMenuPage extends JFrame {
@@ -233,7 +242,7 @@ public class MainMenuPage extends JFrame {
 
 //         BtnViewExpenses.addActionListener(e -> {
 //             dispose(); // Close current window
-//             new ViewExpensesPage(firstName, lastName,totalBudget); // Pass totalBudget to ViewExpensesPage
+//             new ViewExpensesPage(firstName, lastName, totalBudget); // Pass totalBudget to ViewExpensesPage
 //         });
 
 //         BtnEditExpense.addActionListener(e -> {
@@ -256,12 +265,36 @@ public class MainMenuPage extends JFrame {
 //             new ViewInsightsPage(firstName, lastName, totalBudget); // Navigate to ViewInsightsPage
 //         });
 
-//         // BtnExport.addActionListener(e -> {
-//         //     dispose(); // Close current window
-//         //     new ExportToCSVPage(); // Navigate to ExportToCSVPage
-//         // });
+//         BtnExport.addActionListener(e -> {
+//             exportToCSV();
+//         });
 
 //         BtnClose.addActionListener(e -> System.exit(0));
+//     }
+
+//     private void exportToCSV() {
+//         SimpleDateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy");
+//         String currentDate = dateFormat.format(new Date());
+
+//         String fileName = "Expenses.csv";
+
+//         try (FileWriter writer = new FileWriter(fileName)) {
+//             // Header
+//             writer.append("Name: ").append(firstName).append(" ").append(lastName).append(",,,");
+//             writer.append("Expense Data,,,Data Generated: ").append(currentDate).append("\n");
+
+//             // Columns
+//             writer.append("Date,Name,Category,Amount\n");
+
+//             // Expense data
+//             for (String[] expense : expenses) {
+//                 writer.append(String.join(",", expense)).append("\n");
+//             }
+
+//             JOptionPane.showMessageDialog(this, "Expenses exported successfully to " + fileName, "Success", JOptionPane.INFORMATION_MESSAGE);
+//         } catch (IOException e) {
+//             JOptionPane.showMessageDialog(this, "Error exporting expenses: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+//         }
 //     }
 
 //     private JButton createStyledButton(String text) {
