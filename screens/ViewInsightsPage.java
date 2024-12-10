@@ -1,6 +1,7 @@
 package screens;
 
 import java.awt.*;
+import java.util.*;
 import javax.swing.*;
 
 public class ViewInsightsPage extends JFrame {
@@ -72,11 +73,25 @@ public class ViewInsightsPage extends JFrame {
 
     private void showTableByMonth() {
         tablePanel.removeAll();
+
+        // Calculate totals by month
+        Map<String, Double> totalsByMonth = new LinkedHashMap<>();
+        for (String[] expense : MainMenuPage.expenses) {
+            String date = expense[0];
+            double amount = Double.parseDouble(expense[3]);
+            String month = getMonthName(date.split("/")[0]); // Extract month name
+            totalsByMonth.put(month, totalsByMonth.getOrDefault(month, 0.0) + amount);
+        }
+
+        // Convert totals to table data
         String[] columns = {"Month", "Total Spent"};
-        String[][] data = {
-            {"November", "$34.72"},
-            {"December", "$30.35"}
-        };
+        String[][] data = new String[totalsByMonth.size()][2];
+        int row = 0;
+        for (Map.Entry<String, Double> entry : totalsByMonth.entrySet()) {
+            data[row][0] = entry.getKey();
+            data[row][1] = String.format("$%.2f", entry.getValue());
+            row++;
+        }
 
         JTable table = new JTable(data, columns);
         JScrollPane scrollPane = new JScrollPane(table);
@@ -88,12 +103,24 @@ public class ViewInsightsPage extends JFrame {
 
     private void showTableByCategory() {
         tablePanel.removeAll();
+
+        // Calculate totals by category
+        Map<String, Double> totalsByCategory = new LinkedHashMap<>();
+        for (String[] expense : MainMenuPage.expenses) {
+            String category = expense[2]; // Category is already normalized in AddExpensePage
+            double amount = Double.parseDouble(expense[3]);
+            totalsByCategory.put(category, totalsByCategory.getOrDefault(category, 0.0) + amount);
+        }
+
+        // Convert totals to table data
         String[] columns = {"Category", "Total Spent"};
-        String[][] data = {
-            {"Groceries", "$34.72"},
-            {"Health", "$6.41"},
-            {"Entertainment", "$23.94"}
-        };
+        String[][] data = new String[totalsByCategory.size()][2];
+        int row = 0;
+        for (Map.Entry<String, Double> entry : totalsByCategory.entrySet()) {
+            data[row][0] = entry.getKey();
+            data[row][1] = String.format("$%.2f", entry.getValue());
+            row++;
+        }
 
         JTable table = new JTable(data, columns);
         JScrollPane scrollPane = new JScrollPane(table);
@@ -101,6 +128,37 @@ public class ViewInsightsPage extends JFrame {
         tablePanel.add(scrollPane);
         tablePanel.revalidate();
         tablePanel.repaint();
+    }
+
+    private String getMonthName(String monthNumber) {
+        switch (monthNumber) {
+            case "01":
+                return "January";
+            case "02":
+                return "February";
+            case "03":
+                return "March";
+            case "04":
+                return "April";
+            case "05":
+                return "May";
+            case "06":
+                return "June";
+            case "07":
+                return "July";
+            case "08":
+                return "August";
+            case "09":
+                return "September";
+            case "10":
+                return "October";
+            case "11":
+                return "November";
+            case "12":
+                return "December";
+            default:
+                return "Unknown";
+        }
     }
 
     private JButton createStyledButton(String text) {
@@ -114,7 +172,7 @@ public class ViewInsightsPage extends JFrame {
     }
 }
 
-
+//********************************************************************************************************* */
 // package screens;
 
 // import java.awt.*;
