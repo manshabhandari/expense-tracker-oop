@@ -50,6 +50,13 @@ public class ViewExpensesPage extends JFrame {
         });
 
         BtnEditExpense.addActionListener(e -> {
+            int selectedRow = expenseTable.getSelectedRow();
+            if (selectedRow >= 0) {
+                dispose();
+                new EditExpensePage(firstName, lastName, totalBudget, expenseIndex, date, name, category, amount); // Navigate to EditExpensePage
+            } else {
+                JOptionPane.showMessageDialog(this, "Please select an expense to edit.", "Error", JOptionPane.ERROR_MESSAGE);
+            }
         });
 
         BtnDeleteExpense.addActionListener(e -> {
