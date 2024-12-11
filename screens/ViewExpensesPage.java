@@ -17,7 +17,7 @@ public class ViewExpensesPage extends JFrame {
         panel.setLayout(new BorderLayout());
 
         // Table data
-        String[] columns = {"Date", "Name", "Category", "Amount"};
+        String[] columns = { "Date", "Name", "Category", "Amount" };
         ArrayList<String[]> data = MainMenuPage.expenses;
         String[][] tableData = data.toArray(new String[0][]);
 
@@ -72,10 +72,25 @@ public class ViewExpensesPage extends JFrame {
         BtnDeleteExpense.setVisible(false);
 
         BtnEditExpense.addActionListener(e -> {
-            dispose();
-            new EditExpensePage(firstName, lastName, totalBudget);
+            // dispose();
+            int selectedRow = table.getSelectedRow();
+            if (selectedRow != -1) {
+                String[] expense = data.get(selectedRow);
+                new EditExpensePage(firstName, lastName, totalBudget);
+            }
+
         });
 
+        BtnDeleteExpense.addActionListener(e -> {
+            int selectedRow = table.getSelectedRow();
+            if (selectedRow != -1) {
+                data.remove(selectedRow);
+                DefaultTableModel model = (DefaultTableModel) table.getModel();
+                model.removeRow(selectedRow);
+            }
+        });
+
+        // ERROR HERE
         editDeletePanel.add(BtnEditExpense);
         editDeletePanel.add(BtnDeleteExpense);
 
