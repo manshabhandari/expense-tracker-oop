@@ -50,7 +50,6 @@ public class ViewExpensesPage extends JFrame {
         });
 
         BtnEditExpense.addActionListener(e -> {
-            // correct the code here
         });
 
         BtnDeleteExpense.addActionListener(e -> {
@@ -60,6 +59,9 @@ public class ViewExpensesPage extends JFrame {
                 tableModel.removeRow(selectedRow);
                 JOptionPane.showMessageDialog(this, "Expense deleted successfully.", "Success",
                         JOptionPane.INFORMATION_MESSAGE);
+            } else {
+                JOptionPane.showMessageDialog(this, "Please select an expense to delete.", "Error",
+                        JOptionPane.ERROR_MESSAGE);
             }
         });
 
