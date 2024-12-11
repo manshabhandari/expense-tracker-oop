@@ -15,6 +15,11 @@ public class MainMenuPage extends JFrame {
    private String lastName;
    private double totalBudget;
    public static ArrayList<String[]> expenses = new ArrayList<>();
+   private int expenseIndex;
+   private String date;
+   private String name;
+   private String category;
+   private String amount;
 
 
    public MainMenuPage(String firstName, String lastName, double totalBudget) {
@@ -99,9 +104,9 @@ public class MainMenuPage extends JFrame {
 
 
        BtnEditExpense.addActionListener(e -> {
-           dispose(); // Close current window
-           new EditExpensePage(firstName, lastName, totalBudget); // Navigate to EditExpensePage
-       });
+        dispose(); // Close current window
+        new EditExpensePage(firstName, lastName, totalBudget, expenseIndex, date, name, category, amount); // Navigate to EditExpensePage
+    });
 
 
        BtnSearchByName.addActionListener(e -> {
