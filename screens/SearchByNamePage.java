@@ -24,9 +24,8 @@ public class SearchByNamePage extends JFrame {
 
        setTitle("Search By Name");
        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-       setSize(750, 500); // Ensure appropriate initial window size
+       setSize(750, 500);
        setLocationRelativeTo(null);
-
 
        JPanel panel = new JPanel();
        panel.setBackground(new Color(224, 247, 250));
@@ -35,72 +34,53 @@ public class SearchByNamePage extends JFrame {
        gbc.insets = new Insets(10, 10, 10, 10);
        gbc.fill = GridBagConstraints.HORIZONTAL;
 
-
-       // Title
        JLabel titleLabel = new JLabel("Search By Name", SwingConstants.CENTER);
        titleLabel.setFont(new Font("Roboto", Font.BOLD, 16));
 
-
-       // Search field
        JLabel searchLabel = new JLabel("Name:");
        searchLabel.setFont(new Font("Roboto", Font.PLAIN, 14));
        searchField = new JTextField(15);
 
-
-       Dimension buttonSize = new Dimension(210, 40); // Slightly wider width
+       Dimension buttonSize = new Dimension(210, 40);
        JButton BtnSearch = createStyledButton("Search", buttonSize);
        JButton BtnMainMenu = createStyledButton("Main Menu", buttonSize);
 
-
-       // Table placeholder
        tablePanel = new JPanel();
-       tablePanel.setBackground(Color.WHITE); // White box as a filler
+       tablePanel.setBackground(Color.WHITE);
        tablePanel.setPreferredSize(new Dimension(500, 200));
 
-
-       // Button actions
        BtnSearch.addActionListener(e -> searchEntriesByName());
        BtnMainMenu.addActionListener(e -> {
            dispose();
-           new MainMenuPage(firstName, lastName, totalBudget); // Navigate to Main Menu
+           new MainMenuPage(firstName, lastName, totalBudget);
        });
 
-
-       // Adding components to the panel
        gbc.gridx = 0; gbc.gridy = 0; gbc.gridwidth = 2;
        panel.add(titleLabel, gbc);
-
 
        gbc.gridy = 1; gbc.gridwidth = 1;
        gbc.gridx = 0;
        panel.add(searchLabel, gbc);
 
-
        gbc.gridx = 1;
        panel.add(searchField, gbc);
-
 
        gbc.gridy = 2; gbc.gridx = 0; gbc.gridwidth = 2;
        panel.add(BtnSearch, gbc);
 
-
        gbc.gridy = 3;
        panel.add(tablePanel, gbc);
 
-
        gbc.gridy = 4;
        panel.add(BtnMainMenu, gbc);
-
 
        add(panel);
        setVisible(true);
    }
 
-
    private void searchEntriesByName() {
        tablePanel.removeAll();
-       tablePanel.setBackground(new Color(224, 247, 250)); // Reset to match parent background
-
+       tablePanel.setBackground(new Color(224, 247, 250));
 
        String searchName = searchField.getText().trim();
        if (searchName.isEmpty()) {
@@ -108,8 +88,6 @@ public class SearchByNamePage extends JFrame {
            return;
        }
 
-
-       // Filter expenses by name
        java.util.List<String[]> filteredExpenses = new ArrayList<>();
        for (String[] expense : MainMenuPage.expenses) {
            if (expense[1].equalsIgnoreCase(searchName)) {
@@ -117,21 +95,16 @@ public class SearchByNamePage extends JFrame {
            }
        }
 
-
-       // Check if no entries match
        if (filteredExpenses.isEmpty()) {
            JOptionPane.showMessageDialog(this, "No entries found for the name: " + searchName, "Info", JOptionPane.INFORMATION_MESSAGE);
            return;
        }
 
-
-       // Convert filtered entries to table data
        String[] columns = {"Date", "Name", "Category", "Amount"};
        String[][] data = new String[filteredExpenses.size()][4];
        for (int i = 0; i < filteredExpenses.size(); i++) {
            data[i] = filteredExpenses.get(i);
        }
-
 
        JTable table = new JTable(data, columns);
        JScrollPane scrollPane = new JScrollPane(table);
@@ -140,7 +113,6 @@ public class SearchByNamePage extends JFrame {
        tablePanel.revalidate();
        tablePanel.repaint();
    }
-
 
    private JButton createStyledButton(String text, Dimension size) {
        JButton button = new JButton(text);
