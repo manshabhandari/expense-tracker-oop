@@ -79,11 +79,13 @@ public class EditExpensePage extends JFrame {
         JButton BtnCancel = createStyledButton("Cancel", buttonSize);
         JButton BtnSave = createStyledButton("Save Changes", buttonSize);
 
+        //Button to cancel editing an expense
         BtnCancel.addActionListener(e -> {
             dispose();
             new MainMenuPage(firstName, lastName, totalBudget);
         });
 
+        //Button to save changes to an expense 
         BtnSave.addActionListener(e -> {
             String updatedDate = dateField.getText().trim();
             String updatedName = nameField.getText().trim();
@@ -156,6 +158,7 @@ public class EditExpensePage extends JFrame {
         return button;
     }
 
+    //method to validate the date entered by the user
     private String isValidDate(String date) {
         String datePattern = "^(0[1-9]|1[0-2])/([0-2][0-9]|3[0-1])/\\d{4}$";
         if (!Pattern.matches(datePattern, date)) {

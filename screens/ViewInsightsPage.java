@@ -72,6 +72,7 @@ public class ViewInsightsPage extends JFrame {
        setVisible(true);
    }
 
+   //method to display the data by month
    private void showTableByMonth() {
        tablePanel.removeAll();
        tablePanel.setBackground(new Color(224, 247, 250));
@@ -101,6 +102,7 @@ public class ViewInsightsPage extends JFrame {
        tablePanel.repaint();
    }
 
+   //method to display the data by category
    private void showTableByCategory() {
        tablePanel.removeAll();
        tablePanel.setBackground(new Color(224, 247, 250));

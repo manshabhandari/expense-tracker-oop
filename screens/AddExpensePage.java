@@ -43,6 +43,7 @@ public class AddExpensePage extends JFrame {
        JButton BtnSave = createStyledButton("Save", buttonSize);
        JButton BtnCancel = createStyledButton("Cancel", buttonSize);
  
+       //Button to validate and save the expense added by the user
        BtnSave.addActionListener(e -> {
         String date = dateField.getText().trim();
         String name = nameField.getText().trim();
@@ -78,6 +79,7 @@ public class AddExpensePage extends JFrame {
         }
     });
 
+       //Button to cancel adding an expense
        BtnCancel.addActionListener(e -> {
            dispose();
            new MainMenuPage(firstName, lastName, totalBudget);
@@ -128,6 +130,8 @@ public class AddExpensePage extends JFrame {
        button.setPreferredSize(size);
        return button;
    }
+
+   //Method to validate the date entered by the user
    private String isValidDate(String date) {
 
     String datePattern = "^(0[1-9]|1[0-2])/([0-2][0-9]|3[0-1])/\\d{4}$";
@@ -157,7 +161,7 @@ public class AddExpensePage extends JFrame {
     }
 
     return "VALID";
-}
+    }
 
    private boolean isLeapYear(int year) {
        return (year % 4 == 0 && (year % 100 != 0 || year % 400 == 0));

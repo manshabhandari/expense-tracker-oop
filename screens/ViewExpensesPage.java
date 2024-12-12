@@ -65,6 +65,7 @@ public class ViewExpensesPage extends JFrame {
             }
         });
 
+        //method to delete an expense
         BtnDeleteExpense.addActionListener(e -> {
             int selectedRow = expenseTable.getSelectedRow();
             if (selectedRow >= 0) {
@@ -76,6 +77,7 @@ public class ViewExpensesPage extends JFrame {
             }
         });
 
+        //method to redirect to the edit expense page along with the necessary data
         expenseTable.getSelectionModel().addListSelectionListener(event -> {
             if (!event.getValueIsAdjusting() && expenseTable.getSelectedRow() >= 0) {
                 BtnEditExpense.setVisible(true);

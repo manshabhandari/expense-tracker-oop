@@ -104,6 +104,7 @@ public class MainMenuPage extends JFrame {
        BtnClose.addActionListener(e -> System.exit(0));
    }
 
+   //method to export the expenses to a CSV file
    private void exportToCSV() {
        SimpleDateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy");
        String currentDate = dateFormat.format(new Date());

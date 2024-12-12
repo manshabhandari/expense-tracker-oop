@@ -30,6 +30,7 @@ public class SignUpPage extends JFrame {
         Dimension buttonSize = new Dimension(200, 40);
         JButton BtnContinue = createStyledButton("Continue", buttonSize);
 
+        //method to save and validate the data entered by the user
         BtnContinue.addActionListener(e -> {
             String firstName = firstNameField.getText().trim();
             String lastName = lastNameField.getText().trim();

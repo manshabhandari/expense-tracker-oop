@@ -78,6 +78,7 @@ public class SearchByNamePage extends JFrame {
        setVisible(true);
    }
 
+   //method to search the entries by name
    private void searchEntriesByName() {
        tablePanel.removeAll();
        tablePanel.setBackground(new Color(224, 247, 250));
